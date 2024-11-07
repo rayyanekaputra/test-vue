@@ -1,28 +1,28 @@
 <script>
-import { ref } from 'vue';
 
-export default{
-  setup() {
-    const name = ref('john doe');
-    const status = ref('active');
-    const tasks = ref(['Task One', 'Task Two', 'Task Three']);
-
-    const toggleStatus = () =>{
-      if (status.value === "active") {
-        status.value = "pending";
-        console.log(status.value)
-      } else if (status.value === "pending") {
-        status.value = "inactive";
-        console.log(status.value)
-      } else {
-        status.value = "active"
-        console.log(status.value)
-      }
-    }
+export default {
+  data() {
     return {
-      name, status, tasks, toggleStatus
+      name: 'John Doe',
+      status: 'active',
+      tasks: ['Task One', 'Task Two', 'Task Three'],
+      link: 'https://google.com'
     }
-  }
+  },
+  methods: {
+    toggleStatus() {
+      if (this.status === "active") {
+        this.status = "pending";
+        console.log(this.status)
+      } else if (this.status === "pending") {
+        this.status = "inactive";
+        console.log(this.status)
+      } else {
+        this.status = "active"
+        console.log(this.status)
+      }
+    },
+  },
 }
 
 </script>
