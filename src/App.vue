@@ -1,8 +1,6 @@
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default{
-  setup() {
     const name = ref('john doe');
     const status = ref('active');
     const tasks = ref(['Task One', 'Task Two', 'Task Three']);
@@ -19,11 +17,6 @@ export default{
         console.log(status.value)
       }
     }
-    return {
-      name, status, tasks, toggleStatus
-    }
-  }
-}
 
 </script>
 
