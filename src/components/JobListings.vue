@@ -1,6 +1,6 @@
 <script setup>
 import JobListing from '@/components/JobListing.vue';
-import { ref, defineProps, onMounted } from 'vue';
+import { ref, defineProps, onMounted, reactive } from 'vue';
 import { RouterLink } from 'vue-router';
 import axios from 'axios';
 
@@ -12,15 +12,19 @@ defineProps({
     }
 })
 
-const jobs = ref([]);
-console.log(jobs.value);
+const state = reactive({
+    jobs: [],
+    isLoading: true
+})
 
 onMounted(async()=>{
     try {
         const res = await axios.get('http://localhost:5000/jobs')
-        jobs.value = res.data
+        state.jobs = res.data
     } catch (error) {
         console.error('Error Fetching Jobs', error)
+    } finally {
+        state.isLoading = false;
     }
 })
 </script>
@@ -32,7 +36,7 @@ onMounted(async()=>{
             </h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <JobListing v-for="job in jobs.slice(0, limit || jobs.length)" :key="job.id" :job="job" />
+            <JobListing v-for="job in state.jobs.slice(0, limit || state.jobs.length)" :key="job.id" :job="job" />
         </div>
 
     </section>
