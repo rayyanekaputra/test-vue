@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch src/jobs.json --port 5000"
   },
   "dependencies": {
     "@primevue/themes": "^4.2.1",
+    "axios": "^1.7.5",
+    "json-server": "^1.0.0-beta.3",
     "primeicons": "^7.0.0",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
